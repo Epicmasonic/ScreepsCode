@@ -1,12 +1,3 @@
-/*
- * Module code goes here. Use 'module.exports' to export things:
- * module.exports.thing = 'a thing';
- *
- * You can import it from another modules like this:
- * var mod = require('role.builder');
- * mod.thing == 'a thing'; // true
- */
-
 var roleBuilder = {
 
     /** @param {Creep} creep **/
@@ -14,11 +5,11 @@ var roleBuilder = {
 
 	    if(creep.memory.building && creep.store[RESOURCE_ENERGY] == 0) {
             creep.memory.building = false;
-            creep.say('🔋');
+            creep.say('🔄');
 	    }
 	    if(!creep.memory.building && creep.store.getFreeCapacity() == 0) {
 	        creep.memory.building = true;
-	        creep.say('🏗️');
+	        creep.say('🚧');
 	    }
 
 	    if(creep.memory.building) {

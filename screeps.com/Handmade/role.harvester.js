@@ -11,18 +11,18 @@ let score = 0;
 
 var harvester = {
     /** @param {Creep} creep **/
-    run: function(creep) {
+    think: function(creep) {
 	    if ((creep.store.getFreeCapacity(RESOURCE_ENERGY) > 0 && creep.memory.action != "Upgrade Controller") || (creep.store.getUsedCapacity(RESOURCE_ENERGY) <= 0 && creep.memory.action == "Upgrade Controller")) {
             // Mine Energy
-            var sources = creep.room.find(FIND_SOURCES);
+            var source = creep.pos.findClosestByPath(FIND_SOURCES_ACTIVE);
             if (creep.memory.action != "Mine Energy") {
-                console.log(creep.name + ": I'm going to mine energy.")
+                // console.log(creep.name + ": I'm going to mine energy.")
                 creep.say("⛏️⚡")
                 creep.memory.action = "Mine Energy"
             }
             
-            if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(sources[0]);
+            if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(source);
             }
         }
         else {
@@ -33,7 +33,7 @@ var harvester = {
             if (Game.spawns['Spawn1'].store.getFreeCapacity(RESOURCE_ENERGY) <= 0) {
                 // Upgrade Controller
                 if (creep.memory.action != "Upgrade Controller") {
-                    console.log(creep.name + ": I'm fueling the room controller.")
+                    // console.log(creep.name + ": I'm fueling the room controller.")
                     creep.say("⚡🧠")
                     creep.memory.action = "Upgrade Controller"
                 }
@@ -44,7 +44,7 @@ var harvester = {
             else {
                 //Fuel Spawn
                 if (creep.memory.action != "Fuel Spawn") {
-                    console.log(creep.name + ": I'm fueling " + Game.spawns['Spawn1'].name + ".")
+                    // console.log(creep.name + ": I'm fueling " + Game.spawns['Spawn1'].name + ".")
                     creep.say("⚡🏠")
                     creep.memory.action = "Fuel Spawn"
                 }

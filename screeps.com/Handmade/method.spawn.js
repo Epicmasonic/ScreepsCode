@@ -29,7 +29,8 @@ var summon = {
                 }
             }
             
-            spawn.spawnCreep([WORK,CARRY,MOVE], 'Harvest' + number, {memory: {role: 'Harvest'}});
+            spawn.spawnCreep([MOVE,WORK,CARRY,MOVE], 'Harvest' + number, {memory: {role: 'Harvest'}});
+            console.log(spawn.name + ": I'm spawning a Harvester (Harvest" + number + ")");
         }
 	}
 };

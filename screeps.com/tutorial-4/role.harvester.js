@@ -1,13 +1,4 @@
-/*
- * Module code goes here. Use 'module.exports' to export things:
- * module.exports.thing = 'a thing';
- *
- * You can import it from another modules like this:
- * var mod = require('role.stocker');
- * mod.thing == 'a thing'; // true
- */
-
-var roleStocker = {
+var roleHarvester = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
@@ -20,7 +11,7 @@ var roleStocker = {
         else {
             var targets = creep.room.find(FIND_STRUCTURES, {
                     filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_TOWER) &&
+                        return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) &&
                             structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                     }
             });
@@ -33,4 +24,4 @@ var roleStocker = {
 	}
 };
 
-module.exports = roleStocker;
+module.exports = roleHarvester;

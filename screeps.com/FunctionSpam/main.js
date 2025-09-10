@@ -1,9 +1,8 @@
 const harvester = require('(Creep role) Harvester');
 const summon = require('(Building actions) Spawn');
+const icon = require('(Building actions) Spawn Icons');
 
 module.exports.loop = function () {
-    new RoomVisual('E43S57').text('Pixel Progress: ' + Game.cpu.bucket / 100 + '%', -0.25, 0.25, {align: 'left'}); 
-    
     if (Game.cpu.bucket >= 10000) {
         Game.cpu.generatePixel();
     }
@@ -24,6 +23,14 @@ module.exports.loop = function () {
     
     for(var name in Game.spawns) {
         var spawn = Game.spawns[name];
-        summon.run(spawn);
+        
+        new RoomVisual(spawn.room.name).text('Pixel Progress: ' + Game.cpu.bucket / 100 + '%', -0.25, 0.25, {align: 'left'});
+        new RoomVisual(spawn.room.name).text('Room Progress: ' + Math.round(spawn.room.controller.progress / spawn.room.controller.progressTotal * 10000) / 100 + '%', -0.25, 1.25, {align: 'left'});
+        
+        summon.run(spawn);]
+        
+        if (spawn.spawning) {
+            icon.run(spawn);
+        }
     }
 }

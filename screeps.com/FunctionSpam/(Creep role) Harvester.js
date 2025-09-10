@@ -8,9 +8,9 @@ module.exports = {
             creepMemory.changeAction(creep, "Mine Energy", "⛏️⚡", false)
             creepResource.extractSource(creep)
         }
-        else if (Game.spawns['Spawn1'].store.getFreeCapacity(RESOURCE_ENERGY) > 0) {
+        else if (Game.spawns['Spawn_1'].store.getFreeCapacity(RESOURCE_ENERGY) > 0) {
             creepMemory.changeAction(creep, "Fuel Room", "⚡🏠", false)
-            creepResource.fuelStructure(creep, Game.spawns['Spawn1'])
+            creepResource.fuelStructure(creep, Game.spawns['Spawn_1'])
         }
         else {
             creepMemory.changeAction(creep, "Fuel Room", "⚡🧠", false)
